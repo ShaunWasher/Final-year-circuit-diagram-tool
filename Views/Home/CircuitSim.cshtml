@@ -1,0 +1,61 @@
+﻿@using Microsoft.JSInterop
+@{
+    ViewData["Title"] = "Simulator";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="~/css/SimStyle.css" asp-append-version="true" />
+<title>Circuit Simulator</title>
+</head>
+<body>
+<div id="container">
+    <div id="left-panel">
+        <div class="battery" id="componentB" draggable="true" ondragstart="drag(event)" onclick = "select(event)" value = 1 angle = 0></div><span class="componentName">Cell</span><br>
+        <div class="resistor" id="componentR" draggable="true" ondragstart="drag(event)" onclick = "select(event)" value = 1 angle = 0></div><span class="componentName">Resistor</span><br>
+        <div class="bulb" id="componentL" draggable="true" ondragstart="drag(event)" onclick = "select(event)" value = 1 angle = 0></div><span class="componentName">Lamp</span><br>
+        <div class="switch" id="componentS" draggable="true" ondragstart="drag(event)" onclick = "select(event)" value = 1 angle = 0></div><span class="componentName">Switch</span><br>
+        <div class="voltmeter" id="componentV" draggable="true" ondragstart="drag(event)" onclick = "select(event)" angle = 0></div><span class="componentName">Voltmeter</span><br>
+        <div class="ammeter" id="componentA" draggable="true" ondragstart="drag(event)" onclick = "select(event)" angle = 0></div><span class="componentName">Ammeter</span><br>
+        <button id="wireToggle" onclick="toggleWire(event)">Wires</button>
+    </div>
+    <div id="circuit-box" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</div>
+<input type="checkbox" id="showValues" onclick="showValues()">
+  <label for="showValues"> Show Values</label><br>
+<button id="simulate" onclick="makeJSON()">simulate</button>
+<button id="rotate" onclick="rotate()" disabled>rotate</button>
+<button id="switchState" onclick="switchState()" hidden>close switch</button>
+
+<br><label id="valueLabel" hidden></label><input id="valueIn" type="number" value=1 min=0.01 onchange="changeValue()" hidden>
+
+
+<script src="~/js/CircuitMakerScript.js"></script>
+@section Scripts{
+    <script>
+
+        function SendJSON(string) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ReadJSON")',
+            data: {json: string},
+            dataType: "json",
+            success: function (msg) {
+                console.log(JSON.stringify(msg));
+                if (JSON.stringify(msg)[0] == '['){
+                    updateValues(msg)
+                }
+                
+            },
+            error: function (req, status, error) {
+                console.log(error)
+            }
+        });
+    }
+
+    </script>
+}
+
+</body>
+</html>

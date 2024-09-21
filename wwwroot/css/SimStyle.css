@@ -1,0 +1,135 @@
+﻿body {
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#left-panel {
+    width: 200px;
+    height: 450px;
+    padding: 10px;
+    border: 2px solid grey;
+}
+
+#circuit-box {
+    width: 82%;
+    min-height: 600px;
+    border: 2px dashed #000;
+    position: relative;
+}
+
+.componentName {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.battery {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/Cell.png');
+}
+
+.resistor {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/Resistor.png');
+}
+
+.bulb {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/Lamp.png');
+}
+
+.switch {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/SwitchOpen.png');
+}
+
+.voltmeter {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/Voltmeter.png');
+}
+
+.ammeter {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    cursor: move;
+    margin-bottom: 10px;
+    z-index: 1;
+    background-image: url('../ComponentSprites/Ammeter.png');
+}
+
+#wireToggle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 70px;
+    height: 50px;
+    margin-bottom: 10px;
+    z-index: 1;
+}
+
+.wireConnector {
+    width: 10px;
+    height: 10px;
+    z-index: initial;
+    position: absolute;
+    visibility: hidden;
+    background-image: url('../ComponentSprites/Connector.png');
+}
+
+.wire {
+    background-color: #000;
+    z-index: -1;
+    visibility: visible;
+}
+
+.label{
+    background-color: lightgray;
+    padding-left: 2px;
+    width: 50px;
+    height: 22px;
+    position: absolute;
+    visibility: hidden;
+}
+
+button {
+
+ }
+ 
+ button:disabled {
+
+ }
